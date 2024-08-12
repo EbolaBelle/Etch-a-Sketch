@@ -1,14 +1,11 @@
 const container = document.querySelector('.container');
+const button = document.querySelector('button');
 
 const SIZE = 960;
 
-createGrid(100);
+button.addEventListener('click', handleButton)
 
-const etchNodeList = document.querySelectorAll('.gridbox');
-
-etchNodeList.forEach(element => {
-    element.addEventListener('mouseover', handleMouseOver);
-})
+//createGrid(25);
 
 function createGrid(gridSize) {
     for (let i = 0; i < gridSize; i++) {
@@ -23,10 +20,27 @@ function createGrid(gridSize) {
             gridBox.classList.add("gridbox");
             row.appendChild(gridBox);       
         }        
-    }
+    } addMouseFeedback();
 }
 
 function handleMouseOver(event) {
     event.target.classList.toggle('gridbox');
     event.target.classList.toggle('etch');
+    console.log(event.target);
+}
+
+function handleButton(askGrid) {
+    askGrid = prompt("New grid size?", '');
+   /* while (container.firstChild) {
+        container.remove(container.lastChild);
+    }*/
+    createGrid(askGrid);
+    console.log(etchNodeList);
+}
+
+function addMouseFeedback () {
+    const etchNodeList = document.querySelectorAll('.gridbox');
+    etchNodeList.forEach(element => {
+        element.addEventListener('mouseover', handleMouseOver);
+    })
 }

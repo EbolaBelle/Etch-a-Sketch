@@ -3,10 +3,9 @@ const container = document.querySelector('.container');
 createGrid(16, 16);
 
 const etchNodeList = document.querySelectorAll('.gridbox');
-const etchArray = Array.from(etchNodeList);
 
 etchNodeList.forEach(element => {
-    element.addEventListener('mouseenter', handleMouseEnter);
+    element.addEventListener('mouseover', handleMouseLeave);
 })
 
 function createGrid(rowSize, columnSize) {
@@ -18,12 +17,11 @@ function createGrid(rowSize, columnSize) {
             const gridBox = document.createElement('div');
             gridBox.classList.add("gridbox");
             row.appendChild(gridBox);       
-        }
-        
+        }        
     }
 }
 
-function handleMouseEnter(event) {
-    event.target.classList.toggle("etch");
-    event.target.classList.toggle('gridbox')
+function handleMouseLeave(event) {
+    event.target.classList.toggle("gridbox");
+    event.target.classList.toggle('etch');
 }

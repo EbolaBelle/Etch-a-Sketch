@@ -1,6 +1,5 @@
 const container = document.querySelector('.container');
 const button = document.querySelector('button');
-
 const SIZE = 960;
 
 button.addEventListener('click', handleButton)
@@ -30,8 +29,13 @@ function handleMouseOver(event) {
 
 function handleButton(askGrid) {
     askGrid = prompt("New grid size?", '');
-    deleteGrid();
-    createGrid(askGrid);
+    if (askGrid > 100) {
+        alert('Grid limited to 100 squares or less')
+        handleButton(askGrid);
+    } else {
+        deleteGrid();
+        createGrid(askGrid);
+    }
 }
 
 function addMouseFeedback () {

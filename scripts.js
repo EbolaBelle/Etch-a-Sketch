@@ -5,13 +5,13 @@ const SIZE = 960;
 
 button.addEventListener('click', handleButton)
 
-//createGrid(25);
+createGrid(100);
 
 function createGrid(gridSize) {
     for (let i = 0; i < gridSize; i++) {
         let boxSize = (SIZE / gridSize);
         const row = document.createElement('div');
-        //row.classList.add("row");
+        row.classList.add('row');
         row.style.cssText = `display: flex; height: ${boxSize + 'px'}; flex-direction: row;;`        
         container.appendChild(row);
         for (let j = 0; j < gridSize; j++) {
@@ -26,16 +26,12 @@ function createGrid(gridSize) {
 function handleMouseOver(event) {
     event.target.classList.toggle('gridbox');
     event.target.classList.toggle('etch');
-    console.log(event.target);
 }
 
 function handleButton(askGrid) {
     askGrid = prompt("New grid size?", '');
-   /* while (container.firstChild) {
-        container.remove(container.lastChild);
-    }*/
+    deleteGrid();
     createGrid(askGrid);
-    console.log(etchNodeList);
 }
 
 function addMouseFeedback () {
@@ -43,4 +39,13 @@ function addMouseFeedback () {
     etchNodeList.forEach(element => {
         element.addEventListener('mouseover', handleMouseOver);
     })
+}
+
+function deleteGrid(){
+    const GRID = document.querySelector('.row');
+    while(container.firstChild) {
+        while (GRID.firstChild){
+            GRID.removeChild(GRID.lastChild);
+        } container.removeChild(container.lastChild);
+    }
 }

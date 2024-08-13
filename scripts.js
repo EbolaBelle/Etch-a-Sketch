@@ -11,7 +11,7 @@ function createGrid(gridSize) {
         let boxSize = (SIZE / gridSize);
         const row = document.createElement('div');
         row.classList.add('row');
-        row.style.cssText = `display: flex; height: ${boxSize + 'px'}; flex-direction: row;;`        
+        row.style.cssText = `display: flex; height: ${boxSize + 'px'}; flex-direction: row;`;        
         container.appendChild(row);
         for (let j = 0; j < gridSize; j++) {
             const gridBox = document.createElement('div');            
